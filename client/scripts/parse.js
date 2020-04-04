@@ -6,7 +6,7 @@ var Parse = {
     // todo: save a message to the server
     $.ajax({
       // This is the url you should use to communicate with the parse API server.
-      url: `http://parse.${window.CAMPUS}.hackreactor.com/chatterbox/classes/messages`,
+      url: Parse.server,
       type: 'POST',
       data: JSON.stringify(message),
       contentType: 'application/json',
