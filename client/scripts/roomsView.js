@@ -1,30 +1,30 @@
 var RoomsView = {
 
+  $input: $('#addRoom'),
   $button: $('#rooms button'),
-  $select: $('#rooms select'),
+  $select: $('select'),//$select: $('#rooms select')
 
   initialize: function () {
-    RoomsView.$select.on('click', RoomsView.handleSubmit);
+    RoomsView.$input.on('submit', RoomsView.handleSubmit);
+    // RoomsView.$select.on('click', RoomsView.handleSubmit);
   },
 
-  renderRoom: function (room) {
-    //     <select id="cars">
-    //   <option value="volvo">Volvo</option>
-    //   <option value="saab">Saab</option>
-    //   <option value="mercedes">Mercedes</option>
-    //   <option value="audi">Audi</option>
-    // </select>
-    $(`<option value=${roomname}>${roomname}</option`).appendTo("select")
-  },
+  renderRoom: _.template(`
+
+        <option value="roomname"><%- roomname %></option>
+
+  `),
+
   handleSubmit: function (event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    RoomsView.render(RoomsView.roomsData);
+    // RoomsView.render(RoomsView.roomsData);
     console.log('inside RoomsView!');
   },
+
   render: function (roomsData) {
 
-    let html = "<option>";
+    let html = "";
     let roomObj = {};
     console.log(roomsData);
     for (let i = 0; i < roomsData.length; i++) {
@@ -32,8 +32,9 @@ var RoomsView = {
         roomObj[roomsData[i]['roomname']] = roomsData[i]['roomname'];
       }
     }
+    console.log(roomObj)
     for (let key in roomObj) {
-      html += key + "</option>";
+      html += RoomsView.renderRoom(key);
     }
 
     $("select").append(html);
