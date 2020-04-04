@@ -20,9 +20,12 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Messages.addMessages(data.results);
-      Rooms.populateRooms(data.results);
+      // Messages.addMessages(data.results);
+      // Rooms.populateRooms(data.results);
       console.log(data);
+      Messages = data.results;
+      $('#chats').remove('.chat');
+      MessagesView.render();
       callback();
     });
   },

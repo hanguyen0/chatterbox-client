@@ -9,8 +9,21 @@ var FormView = {
   handleSubmit: function (event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    MessagesView.render(Messages.chats);
-    console.log('click!');
+
+    let message = {
+      roomname: 'Stuff',
+      text: FormView.$form.find('#message').val(),
+      username: App.username
+    }
+
+    Parse.create(message, () => {
+      Messages = Messages.concat(message);
+      MessagesView.render();
+    });
+
+    // console.log('click!');
+    App.fetch();
+
   },
 
   setStatus: function (active) {
