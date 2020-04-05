@@ -25,7 +25,7 @@ var MessagesView = {
     //   html += MessageView.render(chatsArray[i]);
     // }
     // $("#chats").append(html);
-    _.each(Messages, (message) => {
+    _.each(Messages.chats, (message) => {
       let $message;
       if (message.username) {
         $message = MessageView.render(message);
