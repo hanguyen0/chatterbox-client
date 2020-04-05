@@ -7,7 +7,7 @@ var Rooms = {
     // }
     data: new Set,
 
-    currentRoom = 'stuff',
+    currentRoom: 'stuff',
 
     update: function(messages) {
       _.chain(messages)
