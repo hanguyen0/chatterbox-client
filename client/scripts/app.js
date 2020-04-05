@@ -23,6 +23,7 @@ var App = {
       // Messages.addMessages(data.results);
       // Rooms.populateRooms(data.results);
       console.log(data);
+      Rooms.update(data.results);
       Messages.update(data.results);
       $('#chats').empty();
       MessagesView.render();
