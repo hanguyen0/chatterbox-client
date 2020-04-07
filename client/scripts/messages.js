@@ -27,7 +27,7 @@ var Messages = {
   conform: function (message) {
     message.text = message.text || '';
     message.username = message.username || '';
-    message.roomname = message.roomname || ';
+    message.roomname = message.roomname || '';
     return message;
   }
 }

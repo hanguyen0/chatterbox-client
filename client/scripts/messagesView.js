@@ -19,7 +19,7 @@ var MessagesView = {
     // $("#chats").append(html);
     Messages
       .item()
-      //.filter(Rooms.isSelected(message))
+      .filter(message => Rooms.isSelected(message.roomname))
       .each((message) => {
         let $message = MessageView.render(message);
         MessagesView.$chats.append($message);
