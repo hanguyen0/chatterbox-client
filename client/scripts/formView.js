@@ -11,19 +11,21 @@ var FormView = {
     event.preventDefault();
 
     let message = {
-      roomname: Rooms.currentRoom,
+      roomname: 'lobby',
       text: FormView.$form.find('#message').val(),
       username: App.username
     }
 
     Parse.create(message, (data) => {
       _.extend(message, data);
-      Messages.post(message);
-      MessagesView.render();
+      //update data
+      Messages.add(message, MessagesView.render);
+      //change messages view
+
     });
 
     // console.log('click!');
-    App.fetch();
+    // App.fetch();
 
   },
 

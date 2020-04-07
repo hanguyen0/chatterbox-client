@@ -4,6 +4,7 @@ var MessagesView = {
 
   initialize: function () {
     $(document).ready(function () {
+      debugger;
       MessagesView.render(Messages.chats)
     });
     // MessagesView.render(Messages.chats);
@@ -16,13 +17,12 @@ var MessagesView = {
     //   html += MessageView.render(chatsArray[i]);
     // }
     // $("#chats").append(html);
-    _.each(Messages.chats, (message) => {
-      let $message;
-      if (message.username) {
-        $message = MessageView.render(message);
-      }
-
-      MessagesView.$chats.append($message);
-    });
+    Messages
+      .item()
+      //.filter(Rooms.isSelected(message))
+      .each((message) => {
+        let $message = MessageView.render(message);
+        MessagesView.$chats.append($message);
+      })
   },
 };
